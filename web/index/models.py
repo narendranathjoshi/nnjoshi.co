@@ -15,6 +15,7 @@ class Tag(models.Model):
 
 class BlogEntry(models.Model):
     title = models.CharField(max_length=150)
+    entry = models.TextField(default='')
     tags = models.ManyToManyField(Tag)
     created = models.DateTimeField(auto_now_add=True)
 
