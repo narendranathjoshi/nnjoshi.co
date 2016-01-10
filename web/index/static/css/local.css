@@ -1,0 +1,9 @@
+.home-display-img {
+    width: 64%;
+    margin: 5% 0 5% 0;
+    border-radius: 16px;
+}
+
+.row-eq-height {
+    vertical-align: middle;
+}
