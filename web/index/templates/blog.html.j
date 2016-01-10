@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html.j" %}
 
 {% block title %}Blog - nnjoshi.co{% endblock %}
 
