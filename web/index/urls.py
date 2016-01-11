@@ -3,7 +3,8 @@ from django.views.generic.base import RedirectView
 from index.views import HomeView, BlogView ,WorkView
 
 urlpatterns = [
-    url(r'^/$', BlogView.as_view()),
     url(r'^about/$', HomeView.as_view()),
+    url(r'^$', RedirectView.as_view(url='/blog/', permanent=True)),
+    url(r'^blog/$', BlogView.as_view()),
     url(r'^work/$', WorkView.as_view())
 ]
