@@ -1,6 +1,6 @@
 {% extends "base.html.j" %}
 
-{% block title %}Home - nnjoshi.co{% endblock %}
+{% block title %}Work - nnjoshi.co{% endblock %}
 
 {% block content %}
 <div class="container">
