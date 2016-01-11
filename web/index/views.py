@@ -31,3 +31,8 @@ class WorkView(View):
         return render(request, "work.html.j", {
             "render_nav_page": render_nav_page
         })
+
+
+class BlogWriteView(View):
+    def get(self, request):
+        return render(request, "write.html.j")
