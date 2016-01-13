@@ -2,7 +2,6 @@ import logging
 from django.http import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
 from django.template.loader import get_template
 from django.views.generic import View
 from index.models import Tag
@@ -33,6 +32,13 @@ def render_nav_page(page_type):
     })
 
 
+def handle_uploaded_file(f, file_save_path):
+    with open(file_save_path, 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
+
+# Views from here
 class HomeView(View):
     def get(self, request):
         return render(request, "home.html.j", {
@@ -42,6 +48,7 @@ class HomeView(View):
 
 class BlogView(View):
     def get(self, request):
+
         return render(request, "blog.html.j", {
             "render_nav_page": render_nav_page
         })
@@ -56,4 +63,9 @@ class WorkView(View):
 
 class BlogWriteView(View):
     def get(self, request):
-        return render(request, "write.html.j")
+        tags = Tag.objects.all()
+        return render(request, "write.html.j", {
+            "tags": tags,
+            "render_blog_peek": render_blog_peek,
+            "render_blog_entry": render_blog_entry,
+        })
