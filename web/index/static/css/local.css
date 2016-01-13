@@ -7,3 +7,7 @@
 .row-eq-height {
     vertical-align: middle;
 }
+
+p {
+    font-weight: 200;
+}

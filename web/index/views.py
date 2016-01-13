@@ -14,6 +14,14 @@ def get_local_log(msg):
     return "(LOCAL DEV): %s" % msg
 
 
+def render_blog_entry():
+    return get_template("entry_template.html.j").render()
+
+
+def render_blog_peek():
+    return get_template("peek_template.html.j").render()
+
+
 def render_nav_page(page_type):
     return get_template("nav.html.j").render({
         "page": page_type
