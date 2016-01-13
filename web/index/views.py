@@ -1,9 +1,17 @@
+import logging
 from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
 from django.template.loader import get_template
 from django.views.generic import View
+from index.models import Tag
+
+logger = logging.getLogger(__name__)
+
+
+def get_local_log(msg):
+    return "(LOCAL DEV): %s" % msg
 
 
 def render_nav_page(page_type):

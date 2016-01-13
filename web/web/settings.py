@@ -118,6 +118,10 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
+        'index': {
+            'handlers': ['file', 'SysLog'],
+            'level': 'INFO',
+        },
     },
 }
 
