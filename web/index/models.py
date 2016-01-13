@@ -19,6 +19,7 @@ class BlogEntry(models.Model):
     slug = models.SlugField(auto_created=True, unique=True, db_index=True)
     image = models.CharField(max_length=100, blank=True, null=True)
     entry = models.TextField(default='')
+    peek = models.CharField(max_length=640, default='')
     tags = models.ManyToManyField(Tag)
     created = models.DateTimeField(auto_now_add=True)
 
