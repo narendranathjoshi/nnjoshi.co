@@ -6,7 +6,8 @@ from django.db import models
 
 
 class Tag(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(auto_created=True, unique=True, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -14,7 +15,9 @@ class Tag(models.Model):
 
 
 class BlogEntry(models.Model):
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=150, unique=True)
+    slug = models.SlugField(auto_created=True, unique=True, db_index=True)
+    image = models.CharField(max_length=100, blank=True, null=True)
     entry = models.TextField(default='')
     tags = models.ManyToManyField(Tag)
     created = models.DateTimeField(auto_now_add=True)
