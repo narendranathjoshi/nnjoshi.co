@@ -95,6 +95,39 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'web.wsgi.application'
 
+# Logging
+# https://docs.djangoproject.com/en/1.9/topics/logging/
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/narendranathjoshi/log/debug.log',
+        },
+        'SysLog': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.SysLogHandler',
+            'formatters': {
+                'simple': {
+                    'format': '%(asctime)s nnjoshi.co: %(message)s',
+                    'datefmt': '%Y-%m-%dT%H:%M:%S',
+                },
+            },
+            'address': ('logs3.papertrailapp.com', 35564)
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
