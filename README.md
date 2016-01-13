@@ -1,2 +1,2 @@
 # nnjoshi.co
-Personal website
+Personal website and blog
