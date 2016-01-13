@@ -11,6 +11,11 @@ logger = logging.getLogger(__name__)
 
 
 def get_local_log(msg):
+    """
+    use this like `logger.warning(get_local_log("test log"))`
+    :param msg:
+    :return:
+    """
     return "(LOCAL DEV): %s" % msg
 
 
