@@ -17,7 +17,8 @@ class Tag(models.Model):
 class BlogEntry(models.Model):
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(auto_created=True, unique=True, db_index=True)
-    image = models.CharField(max_length=100, blank=True, null=True)
+    image = models.CharField(max_length=150, blank=True, null=True)
+    image_caption = models.CharField(max_length=100, blank=True, null=True)
     entry = models.TextField(default='')
     peek = models.CharField(max_length=640, default='')
     tags = models.ManyToManyField(Tag)
