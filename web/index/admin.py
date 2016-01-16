@@ -5,9 +5,9 @@ from index.models import BlogEntry, Tag
 
 
 class BlogEntryAdmin(admin.ModelAdmin):
-    list_display = ["id", "title", "created"]
+    list_display = ["id", "title", "is_published", "created"]
     search_fields = ["title", "tags"]
-    list_filter = ["tags", "created"]
+    list_filter = ["tags", "created", "is_published"]
 
 
 class TagAdmin(admin.ModelAdmin):
