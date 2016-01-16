@@ -73,6 +73,10 @@ def handle_uploaded_file(f, file_save_path):
             destination.write(chunk)
 
 
+def to_date(created_time):
+    return created_time.strftime("%Y, %h %d")
+
+
 def qdict_to_dict(qdict):
     """Convert a Django QueryDict to a Python dict.
 
