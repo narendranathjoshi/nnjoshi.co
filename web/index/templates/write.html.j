@@ -30,7 +30,7 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-6">
-                            <input type="url" class="form-control" name="image_url" id="image_url" placeholder="Enter image URL here">
+                            <input type="url" class="form-control" name="image" id="image" placeholder="Enter image URL here">
                         </div>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="image_caption" id="image_caption" placeholder="Enter image caption here">
