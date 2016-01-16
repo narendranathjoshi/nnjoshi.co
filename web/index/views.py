@@ -69,3 +69,15 @@ class BlogWriteView(View):
             "render_blog_peek": render_blog_peek,
             "render_blog_entry": render_blog_entry,
         })
+
+
+# API Views
+class PreviewAPIView(ListAPIView):
+    queryset = []
+    serializer_class = BlogEntrySerializer
+
+    def post(self, request, *args, **kwargs):
+        return Response({
+            "peek": render_blog_peek(request.data),
+            "entry": render_blog_entry(request.data)
+        })
