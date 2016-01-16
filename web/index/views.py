@@ -172,8 +172,8 @@ class PreviewAPIView(ListAPIView):
         blog_entry = auto_save(data)
 
         return Response({
-            "peek": render_blog_peek({"blog_entry": blog_entry}),
-            "entry": render_blog_entry({"blog_entry": blog_entry})
+            "peek": render_blog_peek(blog_entry),
+            "entry": render_blog_entry(blog_entry)
         })
 
 
