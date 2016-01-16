@@ -4,10 +4,16 @@ from django.contrib import admin
 from index.models import BlogEntry, Tag
 
 
+def publish(modeladmin, request, queryset):
+    queryset.update(status='p')
+publish.short_description = "Publish selected blog posts"
+
+
 class BlogEntryAdmin(admin.ModelAdmin):
     list_display = ["id", "title", "is_published", "created"]
     search_fields = ["title", "tags"]
     list_filter = ["tags", "created", "is_published"]
+    actions = [publish]
 
 
 class TagAdmin(admin.ModelAdmin):
