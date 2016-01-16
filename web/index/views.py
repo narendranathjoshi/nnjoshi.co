@@ -159,8 +159,7 @@ class BlogWriteView(View):
         blog_entry.is_published = True
         blog_entry.save()
 
-        return HttpResponseRedirect("/blog/%s" % blog_entry.slug)
-
+        return HttpResponseRedirect("/blog/post/%s" % blog_entry.slug)
 
 
 # API Views
