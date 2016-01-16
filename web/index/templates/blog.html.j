@@ -13,7 +13,9 @@
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-10">
-                    <h3>Hold tight! Coming soon!</h3>
+                {% for blog_entry in blog_entries %}
+                    {{ render_blog_peek(blog_entry)|safe }}
+                {% endfor %}
                 </div>
             </div>
         </div>
