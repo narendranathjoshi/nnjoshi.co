@@ -4,7 +4,10 @@ from django.shortcuts import render
 
 from django.template.loader import get_template
 from django.views.generic import View
+from rest_framework.generics import ListAPIView
+from rest_framework.response import Response
 from index.models import Tag
+from index.serializers import BlogEntrySerializer
 
 logger = logging.getLogger(__name__)
 
@@ -18,12 +21,15 @@ def get_local_log(msg):
     return "(LOCAL DEV): %s" % msg
 
 
-def render_blog_entry():
-    return get_template("entry_template.html.j").render()
+def render_blog_entry(data):
+    data["tags"] = [Tag.objects.get(id=tag_id) for tag_id in data["tags"]]
+    return get_template("entry_template.html.j").render(data)
 
 
-def render_blog_peek():
-    return get_template("peek_template.html.j").render()
+def render_blog_peek(data):
+    data["tags"] = [Tag.objects.get(id=tag_id) for tag_id in data["tags"]]
+    data["peek"] = data["entry"][:600]
+    return get_template("peek_template.html.j").render(data)
 
 
 def render_nav_page(page_type):
