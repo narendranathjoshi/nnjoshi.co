@@ -43,10 +43,8 @@
             </div>
             <hr>
             <div class="row" id="peek-preview-pane">
-                {{ render_blog_peek()|safe }}
             </div>
             <div class="row" id="entry-preview-pane">
-                {{ render_blog_entry()|safe }}
             </div>
         </div>
         <div class="col-md-2"></div>
@@ -55,9 +53,30 @@
 
 <script>
     function preview() {
-        $.post("/api/v1/preview/", {content:$("#entry"), title:$("#title")}, function(data) {
-            $("#preview-pane").html(data)
+        $.post("/api/v1/preview/", {
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+            entry:$("#entry").val(),
+            title:$("#title").val(),
+            tags:$("#tags").val(),
+            new_tag:$("#new_tag").val(),
+            image:$("#image_url").val(),
+            image_caption:$("#image_caption").val(),
+        }, function(data) {
+            $("#peek-preview-pane").html(data["peek"]);
+            $("#entry-preview-pane").html(data["entry"]);
         })
     }
+
+    setInterval(function () {
+        $.post("/api/v1/save/", {
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+            entry:$("#entry").val(),
+            title:$("#title").val(),
+            tags:$("#tags").val(),
+            new_tag:$("#new_tag").val(),
+            image:$("#image_url").val(),
+            image_caption:$("#image_caption").val(),
+        }, function(data) {})
+    }, 10000)
 </script>
 {% endblock %}
