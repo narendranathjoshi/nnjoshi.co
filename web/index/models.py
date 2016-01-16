@@ -22,6 +22,7 @@ class BlogEntry(models.Model):
     entry = models.TextField(default='')
     peek = models.CharField(max_length=640, default='')
     tags = models.ManyToManyField(Tag)
+    is_published = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
