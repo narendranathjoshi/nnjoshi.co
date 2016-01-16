@@ -23,35 +23,42 @@ def get_local_log(msg):
 
 
 def auto_save(data):
-        slug = slugify(data["title"])
-        if slug and slug != '':
-            blog_entry, created = BlogEntry.objects.get_or_create(slug=slug)
-            blog_entry.title = data["title"]
-            blog_entry.image = data["image"]
-            blog_entry.image_caption = data["image_caption"]
-            blog_entry.entry = data["entry"]
-            blog_entry.peek = data["entry"][:600]
-            for tag_id in data["tags"]:
-                blog_entry.tags.add(Tag.objects.get(id=tag_id))
-            if data["new_tag"] != '':
-                new_tag, _ = Tag.objects.get_or_create(
-                    slug=slugify(data["new_tag"]))
-                new_tag.title = data["new_tag"]
-                new_tag.save()
-                blog_entry.tags.add(new_tag)
-            blog_entry.save()
+    slug = slugify(data["title"])
+    if slug and slug != '':
+        blog_entry, created = BlogEntry.objects.get_or_create(slug=slug)
+        blog_entry.title = data["title"]
+        blog_entry.image = data["image"]
+        blog_entry.image_caption = data["image_caption"]
+        blog_entry.entry = data["entry"]
+        blog_entry.peek = data["entry"][:600]
+        tags = data["tags"] if "tags" in data.keys() else data["tags[]"]
+        for tag_id in tags:
+            blog_entry.tags.add(Tag.objects.get(id=tag_id))
+        if data["new_tag"] != '':
+            new_tag, _ = Tag.objects.get_or_create(
+                slug=slugify(data["new_tag"]))
+            new_tag.title = data["new_tag"]
+            new_tag.save()
+            blog_entry.tags.add(new_tag)
+        blog_entry.save()
 
-            return blog_entry
-        else:
-            return None
-
-
-def render_blog_entry(data):
-    return get_template("entry_template.html.j").render(data)
+        return blog_entry
+    else:
+        return None
 
 
-def render_blog_peek(data):
-    return get_template("peek_template.html.j").render(data)
+def render_blog_entry(blog_entry):
+    return get_template("entry_template.html.j").render({
+        "blog_entry": blog_entry,
+        "to_date": to_date
+    })
+
+
+def render_blog_peek(blog_entry):
+    return get_template("peek_template.html.j").render({
+        "blog_entry": blog_entry,
+        "to_date": to_date
+    })
 
 
 def render_nav_page(page_type):
