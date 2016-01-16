@@ -77,6 +77,6 @@
             image:$("#image").val(),
             image_caption:$("#image_caption").val(),
         }, function(data) {})
-    }, 10000)
+    }, 30000)
 </script>
 {% endblock %}
