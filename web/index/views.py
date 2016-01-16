@@ -97,18 +97,28 @@ class HomeView(View):
 
 class BlogView(View):
     def get(self, request):
+        blog_entries = BlogEntry.objects.filter(is_published=True).order_by(
+            "-created")
 
         return render(request, "blog.html.j", {
-            "render_nav_page": render_nav_page
+            "render_nav_page": render_nav_page,
+            "render_blog_peek": render_blog_peek,
+            "blog_entries": blog_entries
         })
 
 
 class BlogEntryView(View):
     def get(self, request, slug):
-        blog_entry = BlogEntry.objects.get(slug=slug)
+        try:
+            blog_entry = BlogEntry.objects.get(slug=slug)
+        except BlogEntry.DoesNotExist:
+            return render(request, "entry.html.j", {
+                "render_nav_page": render_nav_page
+            })
 
-        return render(request, "blog.html.j", {
+        return render(request, "entry.html.j", {
             "render_nav_page": render_nav_page,
+            "render_blog_entry": render_blog_entry,
             "blog_entry": blog_entry
         })
 
@@ -116,11 +126,14 @@ class BlogEntryView(View):
 class TaggedView(View):
     def get(self, request, slug):
         tag = Tag.objects.get(slug=slug)
-        blog_entries = BlogEntry.objects.filter(tags=tag)
+        blog_entries = BlogEntry.objects.filter(is_published=True,
+                                                tags=tag).order_by("-created")
 
         return render(request, "blog.html.j", {
             "render_nav_page": render_nav_page,
-            "blog_entries": blog_entries
+            "render_blog_peek": render_blog_peek,
+            "blog_entries": blog_entries,
+            "tag": tag
         })
 
 
