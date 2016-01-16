@@ -59,7 +59,7 @@
             title:$("#title").val(),
             tags:$("#tags").val(),
             new_tag:$("#new_tag").val(),
-            image:$("#image_url").val(),
+            image:$("#image").val(),
             image_caption:$("#image_caption").val(),
         }, function(data) {
             $("#peek-preview-pane").html(data["peek"]);
@@ -74,7 +74,7 @@
             title:$("#title").val(),
             tags:$("#tags").val(),
             new_tag:$("#new_tag").val(),
-            image:$("#image_url").val(),
+            image:$("#image").val(),
             image_caption:$("#image_caption").val(),
         }, function(data) {})
     }, 10000)
