@@ -25,7 +25,7 @@ SECRET_KEY = 'q_6tk*%y10r=+5xh1(7tgn+&)j81$zhi7d$ijncahh!8+mb7kf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["nnjoshi.co"]
+ALLOWED_HOSTS = ["nnjoshi.co", "www.nnjoshi.co"]
 
 
 # Application definition
