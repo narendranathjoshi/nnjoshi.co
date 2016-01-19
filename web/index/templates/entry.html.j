@@ -16,8 +16,6 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-2">
-                </div>
                 {% if blog_entry %}
                 <div class="col-md-10">
                     {{ render_blog_entry(blog_entry)|safe }}
@@ -31,6 +29,7 @@
                     </h3>
                 </div>
                 {% endif %}
+                <div class="col-md-2"></div>
             </div>
         </div>
         <div class="col-md-2"></div>
