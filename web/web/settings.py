@@ -94,6 +94,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'web.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.TemplateHTMLRenderer'
+    )
+}
+
 # Logging
 # https://docs.djangoproject.com/en/1.9/topics/logging/
 
