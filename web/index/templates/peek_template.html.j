@@ -19,7 +19,7 @@
             <img src="{{ blog_entry.image }}" style="width:90%;float:left; margin:3%; border-radius: 10px;"/>
         </div>
         <h4 style="font-weight: 200">
-            {{ blog_entry.peek }}... <a href="/blog/post/{{ blog_entry.slug }}">Read More</a>
+            {{ blog_entry.peek }}... <a href="/blog/post/{{ blog_entry.slug }}#disqus_thread">Read More</a>
         </h4>
     </div>
 </div>
@@ -27,7 +27,7 @@
     <div class="col-md-12 text-right">
         <a href="https://twitter.com/share" class="twitter-share-button"{count} data-via="narendranjoshi">Tweet</a>
         <br>
-        <div class="fb-share-button" data-href="/blog/post/{{ blog_entry.slug }}" data-layout="button_count"></div>
+        <div class="fb-share-button" data-href="/blog/post/{{ blog_entry.slug }}#disqus_thread" data-layout="button_count"></div>
     </div>
 </div>
 <hr>
