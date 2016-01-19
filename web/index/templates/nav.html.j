@@ -6,7 +6,7 @@
         </a>
     </div>
     <div class="col-md-7">
-        <div class="col-md-3">
+        <div class="col-md-3 col-xs-4">
             <a href="/about/">
                 <img width="95%" src="{% if page == 'home' %}{{ static("img/sel_home_nav.png") }}{% else %}{{ static("img/home_nav.png") }}{% endif %}">
             </a>
@@ -16,12 +16,12 @@
                 <!--<img width="95%" src="{% if page == 'books' %}{{ static("img/sel_books_nav.png") }}{% else %}{{ static("img/books_nav.png") }}{% endif %}">-->
             <!--</a>-->
         <!--</div>-->
-        <div class="col-md-3">
+        <div class="col-md-3 col-xs-4">
             <a href="/blog/">
                 <img width="95%" src="{% if page == 'blog' %}{{ static("img/sel_blog_nav.png") }}{% else %}{{ static("img/blog_nav.png") }}{% endif %}">
             </a>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-xs-4">
             <a href="/work/">
                 <img width="95%" src="{% if page == 'work' %}{{ static("img/sel_work_nav.png") }}{% else %}{{ static("img/work_nav.png") }}{% endif %}">
             </a>
