@@ -6,6 +6,7 @@ from django.template.loader import get_template
 from django.utils.text import slugify
 from django.views.generic import View
 from rest_framework.generics import ListAPIView
+from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from index.models import Tag, BlogEntry
 from index.serializers import BlogEntrySerializer
@@ -99,11 +100,13 @@ class BlogView(View):
     def get(self, request):
         blog_entries = BlogEntry.objects.filter(is_published=True).order_by(
             "-created")
+        tags = Tag.objects.all()
 
         return render(request, "blog.html.j", {
             "render_nav_page": render_nav_page,
             "render_blog_peek": render_blog_peek,
-            "blog_entries": blog_entries
+            "blog_entries": blog_entries,
+            "all_tags": tags
         })
 
 
@@ -189,17 +192,18 @@ class BlogEditView(View):
 
 # API Views
 class PreviewAPIView(ListAPIView):
-    queryset = []
-    serializer_class = BlogEntrySerializer
+    renderer_classes = (TemplateHTMLRenderer,)
 
     def post(self, request, *args, **kwargs):
         data = qdict_to_dict(request.data)
         blog_entry = auto_save(data)
 
-        return Response({
-            "peek": render_blog_peek(blog_entry),
-            "entry": render_blog_entry(blog_entry)
-        })
+        if data["content"] == 'peek':
+            return HttpResponse(render_blog_peek(blog_entry))
+        else:
+            return Response({"blog_entry": blog_entry,
+                             "to_date": to_date},
+                            template_name="entry_template.html.j")
 
 
 class AutoSaveAPIView(ListAPIView):

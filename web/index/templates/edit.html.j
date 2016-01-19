@@ -53,7 +53,8 @@
 
 <script>
     function preview() {
-        $.post("/api/v1/preview/", {
+        $("#peek-preview-pane").load("/api/v1/preview/", {
+            content: 'peek',
             csrfmiddlewaretoken: "{{ csrf_token }}",
             entry:$("#entry").val(),
             title:$("#title").val(),
@@ -61,9 +62,16 @@
             new_tag:$("#new_tag").val(),
             image:$("#image").val(),
             image_caption:$("#image_caption").val(),
-        }, function(data) {
-            $("#peek-preview-pane").html(data["peek"]);
-            $("#entry-preview-pane").html(data["entry"]);
+        })
+        $("#entry-preview-pane").load("/api/v1/preview/", {
+            content: 'entry',
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+            entry:$("#entry").val(),
+            title:$("#title").val(),
+            tags:$("#tags").val(),
+            new_tag:$("#new_tag").val(),
+            image:$("#image").val(),
+            image_caption:$("#image_caption").val(),
         })
     }
 
