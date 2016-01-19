@@ -162,6 +162,31 @@ class BlogWriteView(View):
         return HttpResponseRedirect("/blog/post/%s" % blog_entry.slug)
 
 
+class BlogEditView(View):
+    def get(self, request, id):
+        try:
+            blog_entry = BlogEntry.objects.get(id=id)
+        except BlogEntry.DoesNotExist:
+            return HttpResponse("No blog post for the specified ID")
+        tags = Tag.objects.all()
+        selected_tags = [b.id for b in blog_entry.tags.all()]
+        return render(request, "edit.html.j", {
+            "tags": tags,
+            "render_blog_peek": render_blog_peek,
+            "render_blog_entry": render_blog_entry,
+            "blog_entry": blog_entry,
+            "selected_tags": selected_tags
+        })
+
+    def post(self, request):
+        data = qdict_to_dict(request.POST)
+        blog_entry = auto_save(data)
+        blog_entry.is_published = True
+        blog_entry.save()
+
+        return HttpResponseRedirect("/blog/post/%s" % blog_entry.slug)
+
+
 # API Views
 class PreviewAPIView(ListAPIView):
     queryset = []
