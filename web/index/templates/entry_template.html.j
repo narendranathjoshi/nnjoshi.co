@@ -20,9 +20,9 @@
             <br>
             <h5>{{ blog_entry.image_caption }}</h5>
         </div>
-        <h4 style="font-weight: 200">
-            {{ blog_entry.entry }}
-        </h4>
+        <p class="post">
+            {{ blog_entry.entry|safe }}
+        </p>
     </div>
 </div>
 <div class="row">

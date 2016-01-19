@@ -18,9 +18,9 @@
         <div style="float:left;width:25%;" class="text-center">
             <img src="{{ blog_entry.image }}" style="width:90%;float:left; margin:3%; border-radius: 10px;"/>
         </div>
-        <h4 style="font-weight: 200">
-            {{ blog_entry.peek }}... <a href="/blog/post/{{ blog_entry.slug }}#disqus_thread">Read More</a>
-        </h4>
+        <p class="post">
+            {{ blog_entry.peek|safe }}... <a href="/blog/post/{{ blog_entry.slug }}#disqus_thread">Read More</a>
+        </p>
     </div>
 </div>
 <div class="row">
