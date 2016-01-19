@@ -181,7 +181,7 @@ class BlogEditView(View):
             "selected_tags": selected_tags
         })
 
-    def post(self, request):
+    def post(self, request, id):
         data = qdict_to_dict(request.POST)
         blog_entry = auto_save(data)
         blog_entry.is_published = True
