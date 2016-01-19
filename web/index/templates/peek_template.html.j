@@ -14,16 +14,20 @@
 </div>
 <br>
 <div class="row">
-    <div class="col-sm-12 text-justify">
+    <div class="col-md-12 text-justify">
         <div style="float:left;width:25%;" class="text-center">
-            <img src="{{ blog_entry.image }}" style="width:90%;float:left; margin:3%"/>
-            <br>
-            <h5>{{ blog_entry.image_caption }}</h5>
+            <img src="{{ blog_entry.image }}" style="width:90%;float:left; margin:3%; border-radius: 10px;"/>
         </div>
-        <p>
+        <h4 style="font-weight: 200">
             {{ blog_entry.peek }}... <a href="/blog/post/{{ blog_entry.slug }}">Read More</a>
-        </p>
+        </h4>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-md-12 text-right">
+        <a href="https://twitter.com/share" class="twitter-share-button"{count} data-via="narendranjoshi">Tweet</a>
+        <br>
+        <div class="fb-share-button" data-href="/blog/post/{{ blog_entry.slug }}" data-layout="button_count"></div>
+    </div>
+</div>
 <hr>
