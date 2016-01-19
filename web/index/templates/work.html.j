@@ -52,6 +52,7 @@
                     <h4>Developed a JavaScript-based typing game as a part of the Web
                     Technologies course in a team of two. It is a game which tests and improves the typing speed of a user with different modes of gameplay. It was developed in HTML/CSS/JavaScript and PHP/ MySQL.
                     </h4>
+                    <hr>
                 </div>
                 <div class="col-md-4">
                     <h2>Work</h2>
