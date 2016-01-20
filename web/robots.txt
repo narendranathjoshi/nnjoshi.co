@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /blog/write
+Disallow: /blog/edit
