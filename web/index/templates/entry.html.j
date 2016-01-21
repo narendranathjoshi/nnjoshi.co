@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-md-10">
-                    <div class="fb-comments" data-href="http://nnjoshi.co/blog/post/{{ blog_entry.title }}" data-numposts="10"></div>
+                    <div class="fb-comments" data-href="http://nnjoshi.co/blog/post/{{ blog_entry.slug }}" data-numposts="10"></div>
                     {% else %}
                     <div class="col-md-10 text-center">
                         <h3>
