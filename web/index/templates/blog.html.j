@@ -10,12 +10,18 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             {% if not tag %}
-            <div class="row">
-                {% for all_tag in all_tags %}
-                    <a href="/blog/tagged/{{ all_tag.slug }}" class="btn btn-default">{{ all_tag.title }}</a>
-                {% endfor %}
-            </div>
-            <hr>
+                <div class="row">
+                    {% for all_tag in all_tags %}
+                        <a href="/blog/tagged/{{ all_tag.slug }}" class="btn btn-default">{{ all_tag.title }}</a>
+                    {% endfor %}
+                </div>
+                <hr>
+            {% else %}
+                <div class="row">
+                    <h3>{{ tag.title }}</h3>
+                    <p style="font-size: 100%" class="text-justify">{{ tag.description }}</p>
+                </div>
+                <hr>
             {% endif %}
             <div class="row">
                 {% for blog_entry in blog_entries %}
