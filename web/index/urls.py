@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
-from django.views.generic.base import RedirectView
+from django.views.generic.base import RedirectView, TemplateView
 from index.views import HomeView, BlogView, WorkView, BlogWriteView, \
     PreviewAPIView, AutoSaveAPIView, BlogEntryView, TaggedView, BlogEditView
 
@@ -19,4 +19,9 @@ urlpatterns = [
     # API views
     url(r'^api/v1/preview/?$', PreviewAPIView.as_view()),
     url(r'^api/v1/save/?$', AutoSaveAPIView.as_view()),
+
+    # robots.txt
+    url(r'^robots\.txt/$', TemplateView.as_view(
+        template_name='robots.txt', content_type='text/plain')),
+
 ]
