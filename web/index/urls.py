@@ -20,8 +20,10 @@ urlpatterns = [
     url(r'^api/v1/preview/?$', PreviewAPIView.as_view()),
     url(r'^api/v1/save/?$', AutoSaveAPIView.as_view()),
 
-    # robots.txt
+    # robots.txt and favicon
     url(r'^robots\.txt/$', TemplateView.as_view(
         template_name='robots.txt', content_type='text/plain')),
+    url(r'^favicon\.ico/$', RedirectView.as_view(
+        url='/static/favicon/favicon.ico', permanent=True)),
 
 ]
