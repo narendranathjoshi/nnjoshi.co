@@ -27,6 +27,10 @@ urlpatterns = [
     url(r'^favicon\.ico/$', RedirectView.as_view(
         url='/static/favicon/favicon.ico', permanent=True)),
 
+    # mobile redirects
+    url(r'^m/?$', RedirectView.as_view(url='/blog', permanent=True)),
+    url(r'^mobile/?$', RedirectView.as_view(url='/blog', permanent=True)),
+
     # error pages
     url(r'^([a-zA-Z0-9-]+)/?$', HttpError404View.as_view()),
 
