@@ -197,6 +197,13 @@ class BlogEditView(View):
         return HttpResponseRedirect("/blog/post/%s" % blog_entry.slug)
 
 
+class HttpError404View(View):
+    def dispatch(self, request, *args, **kwargs):
+        return render(request, "404.html.j", {
+            "render_nav_page": render_nav_page
+        })
+
+
 # API Views
 class PreviewAPIView(ListAPIView):
     renderer_classes = (TemplateHTMLRenderer,)

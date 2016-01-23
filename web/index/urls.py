@@ -2,7 +2,8 @@ from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import RedirectView, TemplateView
 from index.views import HomeView, BlogView, WorkView, BlogWriteView, \
-    PreviewAPIView, AutoSaveAPIView, BlogEntryView, TaggedView, BlogEditView
+    PreviewAPIView, AutoSaveAPIView, BlogEntryView, TaggedView, BlogEditView, \
+    HttpError404View
 
 urlpatterns = [
     url(r'^about/?$', HomeView.as_view()),
@@ -25,5 +26,8 @@ urlpatterns = [
         template_name='robots.txt', content_type='text/plain')),
     url(r'^favicon\.ico/$', RedirectView.as_view(
         url='/static/favicon/favicon.ico', permanent=True)),
+
+    # error pages
+    url(r'^([a-zA-Z0-9-]+)/?$', HttpError404View.as_view()),
 
 ]
