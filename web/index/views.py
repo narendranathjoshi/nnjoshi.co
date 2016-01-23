@@ -1,13 +1,14 @@
 import logging
+
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-
 from django.template.loader import get_template
 from django.utils.text import slugify
 from django.views.generic import View
 from rest_framework.generics import ListAPIView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
+
 from index.models import Tag, BlogEntry
 from index.serializers import BlogEntrySerializer
 
@@ -115,7 +116,7 @@ class BlogEntryView(View):
         try:
             blog_entry = BlogEntry.objects.get(slug=slug)
         except BlogEntry.DoesNotExist:
-            return render(request, "entry.html.j", {
+            return render(request, "404.html.j", {
                 "render_nav_page": render_nav_page
             })
 
@@ -128,7 +129,13 @@ class BlogEntryView(View):
 
 class TaggedView(View):
     def get(self, request, slug):
-        tag = Tag.objects.get(slug=slug)
+        try:
+            tag = Tag.objects.get(slug=slug)
+        except Tag.DoesNotExist:
+            return render(request, "404.html.j", {
+                "render_nav_page": render_nav_page
+            })
+
         blog_entries = BlogEntry.objects.filter(is_published=True,
                                                 tags=tag).order_by("-created")
 
