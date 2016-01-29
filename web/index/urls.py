@@ -32,6 +32,6 @@ urlpatterns = [
     url(r'^mobile/?$', RedirectView.as_view(url='/blog', permanent=True)),
 
     # error pages
-    url(r'^([a-zA-Z0-9-]+)/?$', HttpError404View.as_view()),
+    url(r'^([a-zA-Z0-9-/]+)/?$', HttpError404View.as_view()),
 
 ]
