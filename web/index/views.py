@@ -14,6 +14,8 @@ from index.serializers import BlogEntrySerializer
 
 logger = logging.getLogger(__name__)
 
+# Repo changes test
+
 
 def get_local_log(msg):
     """
