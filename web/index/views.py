@@ -9,7 +9,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 
-from index.models import Tag, BlogEntry
+from index.models import Tag, BlogEntry, Subscriber
 from index.serializers import BlogEntrySerializer
 
 logger = logging.getLogger(__name__)
@@ -231,3 +231,15 @@ class AutoSaveAPIView(ListAPIView):
         return Response({
             "success": True
         })
+
+
+class NewsletterSubscribeAPIView(ListAPIView):
+    def get(self, request, *args, **kwargs):
+        email = request.query_params.get('email')
+        _, created = Subscriber.objects.get_or_create(email=email)
+        if created:
+            return Response({"msg": "success"})
+        else:
+            return Response({"msg": "dupe"})
+
+

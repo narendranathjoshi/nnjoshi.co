@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.base import RedirectView, TemplateView
 from index.views import HomeView, BlogView, WorkView, BlogWriteView, \
     PreviewAPIView, AutoSaveAPIView, BlogEntryView, TaggedView, BlogEditView, \
-    HttpError404View
+    HttpError404View, NewsletterSubscribeAPIView
 
 urlpatterns = [
     url(r'^about/?$', HomeView.as_view()),
@@ -20,6 +20,7 @@ urlpatterns = [
     # API views
     url(r'^api/v1/preview/?$', PreviewAPIView.as_view()),
     url(r'^api/v1/save/?$', AutoSaveAPIView.as_view()),
+    url(r'^api/v1/newsletters/subscribe$', NewsletterSubscribeAPIView.as_view()),
 
     # robots.txt and favicon
     url(r'^robots\.txt/$', TemplateView.as_view(
