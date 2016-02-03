@@ -9,7 +9,8 @@ from django.db import models
 class Tag(models.Model):
     title = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=500, default='')
-    slug = models.SlugField(auto_created=True, unique=True, db_index=True)
+    slug = models.SlugField(auto_created=True, unique=True, db_index=True,
+                            default=None)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -33,6 +34,7 @@ class BlogEntry(models.Model):
 
 
 class Subscriber(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
     email = models.EmailField(default=None, unique=True)
 
     def __str__(self):
