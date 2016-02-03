@@ -36,7 +36,6 @@ class BlogEntry(models.Model):
 class Subscriber(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     email = models.EmailField(default='', unique=True)
-    dummy = models.EmailField(default='', unique=True)
 
     def __str__(self):
         return self.email
