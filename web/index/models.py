@@ -8,7 +8,7 @@ from django.db import models
 
 class Tag(models.Model):
     title = models.CharField(max_length=50, unique=True)
-    description = models.CharField(max_length=500)
+    description = models.CharField(max_length=500, default='')
     slug = models.SlugField(auto_created=True, unique=True, db_index=True,
                             default='')
     created = models.DateTimeField(auto_now_add=True)
@@ -19,7 +19,8 @@ class Tag(models.Model):
 
 class BlogEntry(models.Model):
     title = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(auto_created=True, unique=True, db_index=True)
+    slug = models.SlugField(auto_created=True, unique=True, db_index=True,
+                            default='')
     image = models.CharField(max_length=150, blank=True, null=True)
     image_caption = models.CharField(max_length=100, blank=True, null=True)
     entry = models.CharField(max_length=5000, default='')
@@ -30,3 +31,12 @@ class BlogEntry(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Subscriber(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    email = models.EmailField(default='', unique=True)
+    dummy = models.EmailField(default='', unique=True)
+
+    def __str__(self):
+        return self.email
