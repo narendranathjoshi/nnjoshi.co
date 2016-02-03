@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from index.models import BlogEntry, Tag
+from index.models import BlogEntry, Tag, Subscriber
 
 
 def publish(modeladmin, request, queryset):
@@ -21,5 +21,12 @@ class TagAdmin(admin.ModelAdmin):
     search_fields = ["title"]
     list_filter = ["created"]
 
+
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = ["id", "email", "created"]
+    search_fields = ["email"]
+    list_filter = ["created"]
+
 admin.site.register(BlogEntry, BlogEntryAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(Subscriber, SubscriberAdmin)
