@@ -38,8 +38,27 @@
                 <hr>
             {% else %}
                 <div class="row">
+                    <div class="col-md-6">
                     <h3>{{ tag.title }}</h3>
                     <p style="font-size: 100%" class="text-justify">{{ tag.description }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Like What You Read? So, Read What You Like!</h3>
+                            </div>
+                            <div class="panel-body">
+                                <h4>Drop in your email ID and get all updates right in your inbox!</h4>
+                                <h5>I solemnly swear that I won't spam you. Ever.</h5>
+                                <div class="input-group">
+                                    <input id="subsc_email" type="email" class="form-control" placeholder="Email ID" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" onclick="subscribe()" type="button">Go!</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <hr>
             {% endif %}
