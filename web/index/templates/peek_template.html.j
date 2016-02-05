@@ -7,7 +7,7 @@
         <h4>
             <small>Tags</small>
             {% for tag in blog_entry.tags.all() %}
-            <a class="btn btn-default" href="/blog/tagged/{{ tag.slug }}">{{ tag.title }}</a>
+            <a class="btn btn-default" href="{% if is_ns %}http://nnjoshi.co{% endif %}/blog/tagged/{{ tag.slug }}">{{ tag.title }}</a>
             {% endfor %}
         </h4>
     </div>
@@ -20,10 +20,11 @@
         </div>
         <p class="post">
             {{ blog_entry.peek|safe }}...
-            <a class="btn btn-warning btn-lg" href="/blog/post/{{ blog_entry.slug }}">Read More</a>
+            <a class="btn btn-warning btn-lg" href="{% if is_ns %}http://nnjoshi.co{% endif %}/blog/post/{{ blog_entry.slug }}">Read More</a>
         </p>
     </div>
 </div>
+{% if not is_ns %}
 <div class="row">
     <div class="col-md-12 text-right">
         <a href="https://twitter.com/share" class="twitter-share-button"{count} data-via="narendranjoshi">Tweet</a>
@@ -32,3 +33,4 @@
     </div>
 </div>
 <hr>
+{% endif %}
