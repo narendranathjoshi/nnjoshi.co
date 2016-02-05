@@ -183,3 +183,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+# Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.zoho.com'
+
+EMAIL_HOST_USER = 'newsletters@nnjoshi.co'
+
+EMAIL_HOST_PASSWORD = 'nsl^nnj@co'
+
+EMAIL_PORT = 587
