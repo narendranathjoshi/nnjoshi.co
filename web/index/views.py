@@ -56,10 +56,11 @@ def render_blog_entry(blog_entry):
     })
 
 
-def render_blog_peek(blog_entry):
+def render_blog_peek(blog_entry, is_ns):
     return get_template("peek_template.html.j").render({
         "blog_entry": blog_entry,
-        "to_date": to_date
+        "to_date": to_date,
+        "is_ns": is_ns
     })
 
 
@@ -213,7 +214,7 @@ class PreviewAPIView(ListAPIView):
         blog_entry = auto_save(data)
 
         if data["content"] == 'peek':
-            return HttpResponse(render_blog_peek(blog_entry))
+            return HttpResponse(render_blog_peek(blog_entry, False))
         else:
             return Response({"blog_entry": blog_entry,
                              "to_date": to_date},

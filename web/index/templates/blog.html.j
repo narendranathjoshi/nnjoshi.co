@@ -44,7 +44,7 @@
             {% endif %}
             <div class="row">
                 {% for blog_entry in blog_entries %}
-                    {{ render_blog_peek(blog_entry)|safe }}
+                    {{ render_blog_peek(blog_entry, False)|safe }}
                 {% endfor %}
             </div>
         </div>
