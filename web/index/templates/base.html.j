@@ -29,7 +29,7 @@
         <meta name="theme-color" content="#ffffff">
 
         <!--local CSS-->
-        <link rel="stylesheet" href="/static/css/local.css">
+        <link rel="stylesheet" href="http://nnjoshi.co/static/css/local.css">
     </head>
     <body>
     {% block content %}{% endblock %}
