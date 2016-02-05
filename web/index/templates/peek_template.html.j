@@ -7,7 +7,7 @@
         <h4>
             <small>Tags</small>
             {% for tag in blog_entry.tags.all() %}
-            <a class="btn btn-default" href="{% if is_ns %}http://nnjoshi.co{% endif %}/blog/tagged/{{ tag.slug }}">{{ tag.title }}</a>
+            <a class="tag-btn btn btn-success" href="{% if is_ns %}http://nnjoshi.co{% endif %}/blog/tagged/{{ tag.slug }}">{{ tag.title }}</a>
             {% endfor %}
         </h4>
     </div>

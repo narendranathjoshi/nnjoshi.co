@@ -12,8 +12,9 @@
             {% if not tag %}
                 <div class="row">
                     <div class="col-md-6">
+                        <h4>All Tags</h4>
                     {% for all_tag in all_tags %}
-                        <a href="/blog/tagged/{{ all_tag.slug }}" class="btn btn-default">{{ all_tag.title }}</a>
+                        <a href="/blog/tagged/{{ all_tag.slug }}" class="tag-btn btn btn-success">{{ all_tag.title }}</a>
                     {% endfor %}
                     </div>
                     <div class="col-md-6">

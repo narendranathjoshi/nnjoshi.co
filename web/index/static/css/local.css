@@ -13,4 +13,7 @@ p {
     font-size: 150%;
     line-height: 1.5;
 }
+
+.tag-btn {
+    margin-bottom: 6px;
 }
