@@ -20,7 +20,8 @@ urlpatterns = [
     # API views
     url(r'^api/v1/preview/?$', PreviewAPIView.as_view()),
     url(r'^api/v1/save/?$', AutoSaveAPIView.as_view()),
-    url(r'^api/v1/newsletters/subscribe$', NewsletterSubscribeAPIView.as_view()),
+    url(r'^api/v1/newsletters/subscribe$',
+        NewsletterSubscribeAPIView.as_view()),
 
     # robots.txt and favicon
     url(r'^robots\.txt/$', TemplateView.as_view(
@@ -32,7 +33,12 @@ urlpatterns = [
     url(r'^m/?$', RedirectView.as_view(url='/blog', permanent=True)),
     url(r'^mobile/?$', RedirectView.as_view(url='/blog', permanent=True)),
 
+    # other and misc pages
+    url(r'^valentine/?$', login_required(TemplateView.as_view(
+        template_name='vd.html', content_type='text/html'),
+        login_url='/admin/login')),
+
     # error pages
-    url(r'^([a-zA-Z0-9-/]+)/?$', HttpError404View.as_view()),
+    # url(r'^([a-zA-Z0-9-/]+)/?$', HttpError404View.as_view()),
 
 ]
