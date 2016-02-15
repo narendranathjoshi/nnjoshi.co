@@ -32,7 +32,7 @@ def auto_save(data):
         blog_entry.image = data["image"]
         blog_entry.image_caption = data["image_caption"]
         blog_entry.entry = data["entry"]
-        blog_entry.peek = data["entry"][:600]
+        blog_entry.peek = data["entry"][:300]
         tags = data["tags"] if "tags" in data.keys() else data["tags[]"]
         for tag_id in tags:
             blog_entry.tags.add(Tag.objects.get(id=tag_id))
