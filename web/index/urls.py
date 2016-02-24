@@ -24,9 +24,9 @@ urlpatterns = [
         NewsletterSubscribeAPIView.as_view()),
 
     # robots.txt and favicon
-    url(r'^robots\.txt/$', TemplateView.as_view(
+    url(r'^robots\.txt$', TemplateView.as_view(
         template_name='robots.txt', content_type='text/plain')),
-    url(r'^favicon\.ico/$', RedirectView.as_view(
+    url(r'^favicon\.ico$', RedirectView.as_view(
         url='/static/favicon/favicon.ico', permanent=True)),
 
     # mobile redirects
