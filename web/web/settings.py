@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django_jinja',
     'rest_framework',
 
-    'index',
+    'resume',
 ]
 
 MIDDLEWARE_CLASSES = [
