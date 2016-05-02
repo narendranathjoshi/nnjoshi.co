@@ -76,4 +76,5 @@ class Project(models.Model):
 
 
 class Achievement(models.Model):
-    short_description = models.TextField()
+    short_description = models.CharField(max_length=200)
+    where = models.CharField(max_length=100)
