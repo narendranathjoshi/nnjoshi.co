@@ -46,6 +46,7 @@ class Publication(models.Model):
     title = models.CharField(max_length=200)
     conference = models.CharField(max_length=200)
     co_authors = models.CharField(max_length=300)
+    link = models.URLField(blank=True, null=True)
     year = models.IntegerField(choices=YEARS, default=timezone.now().year)
 
     def __str__(self):
