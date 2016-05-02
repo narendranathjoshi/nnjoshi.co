@@ -30,7 +30,7 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 class PublicationAdmin(admin.ModelAdmin):
     model = Publication
-    list_display = ("id", "title", "conference", "year")
+    list_display = ("id", "title", "conference", "link", "year")
 
 
 class SkillAdmin(admin.ModelAdmin):
@@ -41,13 +41,13 @@ class SkillAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     model = Project
     list_display = (
-        "id", "title", "institution", "organization", "year", "skills")
-    list_filter = ("title", "institution", "organization", "year", " skills")
+        "id", "title", "institution", "organization", "year")
+    list_filter = ("title", "institution", "organization", "year")
 
 
 class AchievementAdmin(admin.ModelAdmin):
     model = Achievement
-    list_display = ("id", "short_description")
+    list_display = ("id", "what", "where", "short_description")
 
 
 admin.site.register(BasicInfo, BasicInfoAdmin)
