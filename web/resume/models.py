@@ -76,5 +76,9 @@ class Project(models.Model):
 
 
 class Achievement(models.Model):
-    short_description = models.CharField(max_length=200)
+    what = models.CharField(max_length=100)
     where = models.CharField(max_length=100)
+    short_description = models.CharField(max_length=200)
+
+    def __str__(self):
+        return "%s at %s" % (self.what, self.where)
