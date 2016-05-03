@@ -14,7 +14,7 @@ class EducationAdmin(admin.ModelAdmin):
     model = Education
     list_display = (
         "id", "institution", "degree", "gpa", "start_date", "end_date",
-        "is_current")
+        "is_current", "image")
     list_filter = (
         "institution", "degree", "gpa", "start_date", "end_date", "is_current")
 

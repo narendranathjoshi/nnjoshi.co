@@ -22,6 +22,7 @@ class Education(models.Model):
     start_date = models.DateField(verbose_name="Start Date")
     end_date = models.DateField(verbose_name="End Date")
     is_current = models.BooleanField(default=False)
+    image = models.URLField(blank=True, null=True)
     relevant_courses = models.TextField()
 
     def __str__(self):
