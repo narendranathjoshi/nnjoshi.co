@@ -35,7 +35,7 @@ class PublicationAdmin(admin.ModelAdmin):
 
 class SkillAdmin(admin.ModelAdmin):
     model = Skill
-    list_display = ("id", "title")
+    list_display = ("id", "title", "fa_string")
 
 
 class ProjectAdmin(admin.ModelAdmin):
