@@ -14,10 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.views.generic import RedirectView
 
 from resume.views import DummyHomeView
 
 urlpatterns = [
     url(r'^$', DummyHomeView.as_view()),
+    # url(r'^apps$', AppsHomeView.as_view()),
+    url(r'^apps$', RedirectView.as_view(url='/inquest', permanent=True)),
+
 
 ]
