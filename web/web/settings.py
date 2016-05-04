@@ -102,6 +102,14 @@ REST_FRAMEWORK = {
     )
 }
 
+# Redis Cache
+# redis.io
+REDIS_CACHE = {
+    'host': 'localhost',
+    'port': 6379,
+    'db': 0
+}
+
 # Logging
 # https://docs.djangoproject.com/en/1.9/topics/logging/
 
