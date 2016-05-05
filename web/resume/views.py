@@ -7,7 +7,7 @@ from resume.models import *
 from web.rediscache import resume_cache
 
 
-class DummyHomeView(View):
+class HomeView(View):
     def get(self, request):
         info_cache_key = "info_v1"
         info = resume_cache.pickled_get(info_cache_key)

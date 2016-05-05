@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.views.generic import RedirectView
 
-from resume.views import HomeView
+from inquest.views import HomeView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view()),
-    # url(r'^apps$', AppsHomeView.as_view()),
-    url(r'^apps$', RedirectView.as_view(url='/inquest', permanent=True)),
+
+    # Redirect example
+    # url(r'^apps$', RedirectView.as_view(url='/inquest', permanent=True)),
 ]
