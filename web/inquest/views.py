@@ -9,4 +9,4 @@ from web.rediscache import resume_cache
 
 class HomeView(View):
     def get(self, request):
-        return HttpResponse("InQuest Page")
+        return render(request, "inquest.html.jinja", {})

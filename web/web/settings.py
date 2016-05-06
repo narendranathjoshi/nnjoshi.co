@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'resume',
+    'inquest',
 ]
 
 MIDDLEWARE_CLASSES = [

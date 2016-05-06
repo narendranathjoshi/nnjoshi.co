@@ -20,6 +20,6 @@ from resume.views import HomeView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view()),
-    # url(r'^apps$', AppsHomeView.as_view()),
-    url(r'^apps$', RedirectView.as_view(url='/inquest', permanent=True)),
+    # url(r'^apps/$', AppsHomeView.as_view()),
+    url(r'^apps/$', RedirectView.as_view(url='/inquest', permanent=True)),
 ]
