@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'resume',
     'inquest',
+    'blog',
 ]
 
 MIDDLEWARE_CLASSES = [
