@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import View
@@ -6,6 +7,9 @@ from blog.models import Post
 
 # helper functions
 def get_published_posts():
+    if settings.DEBUG:
+        return Post.objects.all()
+
     return Post.objects.filter(is_published=True)
 
 
@@ -19,7 +23,7 @@ class HomeView(View):
 
         return render(request, "home.html.jinja", {
             "recent_posts": get_recent_posts(4),
-            "posts": get_published_posts()
+            "posts": get_published_posts(),
         })
 
 

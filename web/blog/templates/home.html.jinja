@@ -12,7 +12,7 @@
                 if they get too long. You can also remove the <p> entirely if you don't
                 need a subtitle.
             -->
-            <h2>{{ post.title }}</h2>
+            <h2><a href="/blog/post/{{ post.slug }}">{{ post.title }}</a></h2>
         </header>
         <div class="info">
             <!--
@@ -23,17 +23,17 @@
                 the entire "date" element.
 
             -->
-            <span class="date"><span class="month">{{ month_first }}<span>{{ month_last }}</span></span> <span class="day">{{ day }}</span><span class="year">, {{ year }}</span></span>
+            <span class="date"><span class="month">{{ post.month_first }}<span>{{ post.month_last }}</span></span> <span class="day">{{ post.day }}</span><span class="year">, {{ post.year }}</span></span>
             <!--
                 Note: You can change the number of list items in "stats" to whatever you want.
             -->
             <ul class="stats">
-                <li><a href="#" class="icon fa-heart">Like</a></li>
+                <!--<li><a href="#" class="icon fa-heart">Like</a></li>-->
                 <!-- <li><a href="#" class="icon fa-twitter">Tweet</a></li> -->
                 <!-- <li><a href="#" class="icon fa-facebook">Share</a></li> -->
             </ul>
         </div>
-        <p>{{ post.get_peek()|safe }}</p>
+        <p>{{ post.peek|safe }} ... <a href="/blog/post/{{ post.slug }}">Read More</a></p>
     </article>
 {% endfor %}
 

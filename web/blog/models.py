@@ -15,5 +15,22 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def get_peek(self):
+    @property
+    def peek(self):
         return self.content[:400]
+
+    @property
+    def month_first(self):
+        return self.created.strftime("%B")[:3]
+
+    @property
+    def month_last(self):
+        return self.created.strftime("%B")[3:]
+
+    @property
+    def day(self):
+        return self.created.day
+
+    @property
+    def year(self):
+        return self.created.year

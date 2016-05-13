@@ -20,6 +20,6 @@ from blog.views import *
 
 urlpatterns = [
     url(r'^$', HomeView.as_view()),
-    url(r'^post/(a-z0-9-)/$', PostView.as_view()),
+    url(r'^post/([a-z0-9-]+)/$', PostView.as_view()),
     url(r'^search/$', SearchView.as_view()),
 ]
