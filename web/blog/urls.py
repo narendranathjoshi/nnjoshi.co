@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.views.generic import RedirectView
 
-from blog.views import HomeView, PostView
+from blog.views import *
 
 urlpatterns = [
     url(r'^$', HomeView.as_view()),
-    url(r'^$', PostView.as_view()),
+    url(r'^post/(a-z0-9-)/$', PostView.as_view()),
+    url(r'^search/$', SearchView.as_view()),
 ]

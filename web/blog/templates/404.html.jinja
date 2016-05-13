@@ -1,0 +1,33 @@
+{% extends "base.html.jinja" %}
+
+{% block title %}{{ post.title }} - nnjoshi.co{% endblock %}
+
+{% block content %}
+<!-- Post -->
+    <article class="box post post-excerpt">
+        <header>
+            <!--
+                Note: Titles and subtitles will wrap automatically when necessary, so don't worry
+                if they get too long. You can also remove the <p> entirely if you don't
+                need a subtitle.
+            -->
+            <h2>404</h2>
+            <p>What you were looking for was not found</p>
+        </header>
+        <p>Head back to the <a href="/blog">home page</a> </p>
+    </article>
+
+<!-- Pagination -->
+    <!--<div class="pagination">-->
+        <!--<a href="#" class="button previous">Previous Page</a>-->
+        <!--<div class="pages">-->
+            <!--<a href="#" class="active">1</a>-->
+            <!--<a href="#">2</a>-->
+            <!--<a href="#">3</a>-->
+            <!--<a href="#">4</a>-->
+            <!--<span>&hellip;</span>-->
+            <!--<a href="#">20</a>-->
+        <!--</div>-->
+        <!--<a href="#" class="button next">Next Page</a>-->
+    <!--</div>-->
+{% endblock %}
