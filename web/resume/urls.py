@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.views.generic import RedirectView
 
-from resume.views import HomeView
+from resume.views import *
 
 urlpatterns = [
     url(r'^$', HomeView.as_view()),
