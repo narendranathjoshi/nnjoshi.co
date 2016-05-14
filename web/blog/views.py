@@ -8,13 +8,13 @@ from blog.models import Post
 # helper functions
 def get_published_posts():
     if settings.DEBUG:
-        return Post.objects.all()
+        return Post.objects.all().order_by('-created')
 
-    return Post.objects.filter(is_published=True)
+    return Post.objects.filter(is_published=True).order_by('-created')
 
 
 def get_recent_posts(number):
-    return get_published_posts().order_by('-created')[:number]
+    return get_published_posts()[:number]
 
 
 # Create your views here.
