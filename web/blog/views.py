@@ -51,7 +51,7 @@ class SearchView(View):
 
         results = get_published_posts().filter(title__icontains=q)
 
-        return render(request, "post.html.jinja", {
+        return render(request, "home.html.jinja", {
             "recent_posts": get_recent_posts(4),
             "posts": results
         })
