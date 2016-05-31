@@ -34,3 +34,8 @@ class HomeView(View):
             "educations": info["educations"],
             "experiences": info["experiences"],
         })
+
+
+class AppLandingView(View):
+    def get(self, request, app):
+        return render(request, "app.html.jinja", {})

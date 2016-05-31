@@ -18,8 +18,14 @@ from django.views.generic import RedirectView
 
 from resume.views import *
 
+
 urlpatterns = [
     url(r'^$', HomeView.as_view()),
+
     # url(r'^apps/$', AppsHomeView.as_view()),
-    url(r'^apps/$', RedirectView.as_view(url='/inquest', permanent=True)),
+    # url(r'^other/$', OtherThingsView.as_view()),
+    url(r'^apps/$', RedirectView.as_view(url='/apps/inquest', permanent=True)),
+    url(r'^other/$', RedirectView.as_view(url='/blog', permanent=True)),
+
+    url(r'^apps/([a-z0-9]+)/$', AppLandingView.as_view()),
 ]
