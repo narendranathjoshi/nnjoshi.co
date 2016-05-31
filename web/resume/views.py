@@ -38,4 +38,4 @@ class HomeView(View):
 
 class AppLandingView(View):
     def get(self, request, app):
-        return render(request, "app.html.jinja", {})
+        return render(request, "%s.html.jinja" % app, {})
