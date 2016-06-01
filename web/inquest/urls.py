@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.views.generic import RedirectView
+from inquest.views import *
 
-urlpatterns = []
+urlpatterns = [
+    url("^api/v1/register", RegisterUserAPIView.as_view())
+]
