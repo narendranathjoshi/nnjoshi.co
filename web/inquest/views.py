@@ -42,21 +42,17 @@ def get_not_active_mailing_list():
 class RegisterUserAPIView(UpdateAPIView):
     def post(self, request, *args, **kwargs):
         try:
+            import pdb;pdb.set_trace()
             params = request.data
             user_info, created = UserInfo.objects.get_or_create(
-                username=params["username"])
-            if created:
-                user_info.os = params["os"]
-                user_info.model = params["model"]
-                user_info.device = params["device"]
-                user_info.sdk = params["sdk"]
-
+                username=params["username"], os=params["osVersion"],
+                model=params["model"], device=params["device"],
+                sdk=params["sdkVersion"], last_ping=timezone.now()
+            )
             user_info.is_active = True
-            user_info.last_ping = timezone.now()
             user_info.save()
 
             return Response(status=HttpStatusCode.ACCEPTED)
         except Exception as e:
             return Response(
                 {"msg": e.message}, status=HttpStatusCode.BAD_REQUEST)
-
