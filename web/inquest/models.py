@@ -8,13 +8,13 @@ from django.db import models
 # Create your models here.
 class UserInfo(models.Model):
     username = models.CharField(max_length=200)
-    os = models.CharField(max_length=200)
-    sdk = models.CharField(max_length=200)
-    device = models.CharField(max_length=200)
-    model = models.CharField(max_length=200)
+    os = models.CharField(max_length=200, blank=True, null=True)
+    sdk = models.CharField(max_length=200, blank=True, null=True)
+    device = models.CharField(max_length=200, blank=True, null=True)
+    model = models.CharField(max_length=200, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_pro = models.BooleanField(default=False)
-    last_ping = models.DateTimeField()
+    last_ping = models.DateTimeField(blank=True, null=True)
 
     def _is_email(self):
         try:
