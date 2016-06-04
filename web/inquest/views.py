@@ -1,6 +1,7 @@
 from django.utils import timezone
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import UpdateAPIView
 from rest_framework.response import Response
+
 from inquest.models import UserInfo
 from inquest.serializers import UserInfoSerializer
 from web.utils import HttpStatusCode
@@ -38,9 +39,7 @@ def get_not_active_mailing_list():
 
 
 # Create your views here.
-class RegisterUserAPIView(ListCreateAPIView):
-    serializer_class = UserInfoSerializer
-
+class RegisterUserAPIView(UpdateAPIView):
     def post(self, request, *args, **kwargs):
         try:
             params = request.data
@@ -48,7 +47,7 @@ class RegisterUserAPIView(ListCreateAPIView):
                 username=params["username"])
             if created:
                 user_info.os = params["os"]
-                user_info.build = params["build"]
+                user_info.model = params["model"]
                 user_info.device = params["device"]
                 user_info.sdk = params["sdk"]
 

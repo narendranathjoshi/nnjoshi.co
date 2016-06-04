@@ -6,9 +6,9 @@ from inquest.models import UserInfo
 
 
 class UserInfoAdmin(admin.ModelAdmin):
-    list_display = ("id", "username", "os", "sdk", "device", "build",
+    list_display = ("id", "username", "os", "sdk", "device", "model",
                     "is_active", "last_ping")
-    list_filter = ("os", "sdk", "device", "build", "is_active")
+    list_filter = ("os", "sdk", "device", "model", "is_active")
 
 
 admin.site.register(UserInfo, UserInfoAdmin)
