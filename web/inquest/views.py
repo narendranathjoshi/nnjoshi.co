@@ -42,7 +42,6 @@ def get_not_active_mailing_list():
 class RegisterUserAPIView(UpdateAPIView):
     def post(self, request, *args, **kwargs):
         try:
-            import pdb;pdb.set_trace()
             params = request.data
             user_info, created = UserInfo.objects.get_or_create(
                 username=params["username"], os=params["osVersion"],
