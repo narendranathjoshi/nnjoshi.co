@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url
 from django.views.generic import RedirectView
 
@@ -24,6 +25,9 @@ urlpatterns = [
 
     # url(r'^apps/$', AppsHomeView.as_view()),
     # url(r'^other/$', OtherThingsView.as_view()),
+    url(r'^resume/$', RedirectView.as_view(
+        url=settings.STATIC_URL + 'files/NarendraNathJoshi.pdf',
+        permanent=True)),
     url(r'^apps/$', RedirectView.as_view(url='/apps/inquest', permanent=True)),
     url(r'^other/$', RedirectView.as_view(url='/blog', permanent=True)),
 
