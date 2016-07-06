@@ -35,6 +35,6 @@ urlpatterns = [
 
 
     # loader.io testing
-    url(r'^loaderio-8072c81ed2865e86699066698e9c40b7$',
+    url(r'^loaderio-8072c81ed2865e86699066698e9c40b7/$',
         LoaderIOTestingView.as_view()),
 ]
