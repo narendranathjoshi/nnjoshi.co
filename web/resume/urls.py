@@ -32,4 +32,9 @@ urlpatterns = [
     url(r'^other/$', RedirectView.as_view(url='/blog', permanent=True)),
 
     url(r'^apps/([a-z0-9]+)/$', AppLandingView.as_view()),
+
+
+    # loader.io testing
+    url(r'^loaderio-8072c81ed2865e86699066698e9c40b7$',
+        LoaderIOTestingView.as_view()),
 ]

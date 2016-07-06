@@ -39,3 +39,8 @@ class HomeView(View):
 class AppLandingView(View):
     def get(self, request, app):
         return render(request, "%s.html.jinja" % app, {})
+
+
+class LoaderIOTestingView(View):
+    def get(self, request):
+        return HttpResponse("loaderio-8072c81ed2865e86699066698e9c40b7")
