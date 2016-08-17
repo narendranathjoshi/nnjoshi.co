@@ -9,14 +9,14 @@ from web.rediscache import resume_cache
 
 class HomeView(View):
     def get(self, request):
-        info_cache_key = "info_v2"
+        info_cache_key = "info_v1"
         info = resume_cache.pickled_get(info_cache_key)
 
         if not info:
             info = {
-                "email": BasicInfo.objects.get(key="email"),
-                "phone": BasicInfo.objects.get(key="phone"),
-                "head_bar": BasicInfo.objects.get(key="head_bar"),
+                "email": BasicInfo.objects.get(key="email").value,
+                "phone": BasicInfo.objects.get(key="phone").value,
+                "head_bar": BasicInfo.objects.get(key="head_bar").value,
                 "skills": Skill.objects.all(),
                 "achievements": Achievement.objects.all(),
                 "projects": Project.objects.all().order_by("-year"),
