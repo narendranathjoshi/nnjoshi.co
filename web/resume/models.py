@@ -9,7 +9,7 @@ from django.utils import timezone
 
 class BasicInfo(models.Model):
     key = models.CharField(max_length=100)
-    value = models.CharField(max_length=100)
+    value = models.CharField(max_length=200)
 
     def __str__(self):
         return "%s - %s" % (self.key, self.value)
