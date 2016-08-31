@@ -1,8 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import View
+from rest_framework.generics import ListAPIView
+from rest_framework.response import Response
 
 from resume.models import *
+from resume.serializers import *
 
 
 class HomeView(View):
@@ -15,7 +18,8 @@ class HomeView(View):
             "achievements": Achievement.objects.all(),
             "projects": Project.objects.all().order_by("-year"),
             "educations": Education.objects.all().order_by("-start_date"),
-            "experiences": Experience.objects.all().order_by("-start_date")
+            "experiences": Experience.objects.all().order_by("-start_date"),
+            "publications": Publication.objects.all().order_by("-year"),
         }
 
         return render(request, "index.html.jinja", {
@@ -27,6 +31,26 @@ class HomeView(View):
             "projects": info["projects"],
             "educations": info["educations"],
             "experiences": info["experiences"],
+            "publications": info["publications"],
+        })
+
+
+class InfoAPIView(ListAPIView):
+    def get(self, request, *args, **kwargs):
+        info = {
+            "email": BasicInfo.objects.get(key="email").value,
+            "phone": BasicInfo.objects.get(key="phone").value,
+            "head_bar": BasicInfo.objects.get(key="head_bar").value,
+            "skills": SkillSerializer(Skill.objects.all(), many=True).data,
+            "achievements": AchievementSerializer(Achievement.objects.all(), many=True).data,
+            "projects": ProjectSerializer(Project.objects.all().order_by("-year"), many=True).data,
+            "educations": EducationSerializer(Education.objects.all().order_by("-start_date"), many=True).data,
+            "experiences": ExperienceSerializer(Experience.objects.all().order_by("-start_date"), many=True).data,
+            "publications": PublicationSerializer(Publication.objects.all().order_by("-year"), many=True).data,
+        }
+
+        return Response(info, headers={
+            "Access-Control-Allow-Origin": "*"
         })
 
 

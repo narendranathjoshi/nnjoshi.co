@@ -22,6 +22,7 @@ from resume.views import *
 
 urlpatterns = [
     url(r'^$', HomeView.as_view()),
+    url(r'^api/info$', InfoAPIView.as_view()),
 
     # url(r'^apps/$', AppsHomeView.as_view()),
     # url(r'^other/$', OtherThingsView.as_view()),
