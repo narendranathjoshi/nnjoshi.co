@@ -2649,11 +2649,26 @@
 		position: fixed;
 		text-align: center;
 		top: 0;
-		width: 23em;
+		width: 25%;
 		right: 0;
 	}
 
+	#bottom-header {
+		background: #1C658C;
+		color: #d1f1e9;
+		height: 5%;
+		position: fixed;
+		text-align: center;
+		bottom: : 0;
+		width: 75%;
+		z-index: 10;
+	}
+
+
 		#header h1, #header h2, #header h3, #header h4, #header h5, #header h6 {
+			color: #ffffff;
+		}
+		#bottom-header h1, #bottom-header h2, #bottom-header h3, #bottom-header h4, #bottom-header h5, #bottom-header h6 {
 			color: #ffffff;
 		}
 
